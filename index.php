@@ -21,6 +21,7 @@ and open the template in the editor.
     </head>
     <body>
         <h1>Cadastro de Pessoas</h1>
+        <h2>INF4M211</h2>
         <table><!-- Cria tabela -->
             <tr><!-- Cria linha -->
                 <td><!-- Cria coluna -->
