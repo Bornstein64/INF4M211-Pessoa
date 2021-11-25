@@ -44,8 +44,8 @@ $cadPFs = new cPessoaF();
                         <td><?php echo $pf['email']; ?></td>
                         <td><?php echo $pf['cpf']; ?></td>
                         <td>
-                            <form action="editPessoaF.php method="POST"> 
-                                <input type="hidden" name="id" value="<?php echo $pf['idPessoa']; ?>" />  
+                            <form action="editPessoaF.php" method="POST"> 
+                                <input type="hidden" name="id" value="<?php echo $pf['idPessoa']; ?>"/>  
                                 <input type="submit" name="updatePF" value="Editar"/>
                             </form>
                             <form action="<?php $cadPFs->deletePes(); ?>" method="POST">

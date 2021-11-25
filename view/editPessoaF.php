@@ -5,10 +5,10 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 
-<?php 
+<?php
 require_once '../controller/cPessoaF.php';
 $id = 0;
-if(isset($_POST['updatePF'])){
+if (isset($_POST['updatePF'])) {
     $id = $_POST['id'];
 }
 $cadPFs = new cPessoaF();
