@@ -89,7 +89,7 @@ class cPessoaF {
             if (!$conexao) {
                 die('Não foi possível conectar. ' . mysqli_error());
             }
-            
+
             $Nome = $_POST['nome'];
             $Email = $_POST['email'];
             $Endereco = $_POST['endereco'];
@@ -97,47 +97,91 @@ class cPessoaF {
             $Cpf = $_POST['cpf'];
             $Rg = $_POST['rg'];
             $Sexo = $_POST['sexo'];
-            
+
             $sql = "insert into `pessoa`(`nome`,`telefone`,`email`,`endereco`,"
-                    ."`cpf`,`rg`,`sexo`) values ('$Nome','$Telefone','$Email',"
+                    . "`cpf`,`rg`,`sexo`) values ('$Nome','$Telefone','$Email',"
                     . "'$Endereco','$Cpf','$Rg','$Sexo')";
-            
+
             // mysqli_select_db($conexao, 'inf4m211');
             $resultado = mysqli_query($conexao, $sql);
-            
-            
-            if(!$resultado){
+
+
+            if (!$resultado) {
                 die('Não foi possível inserir na tabela. ' . mysqli_error($conexao));
             }
             mysqli_close($conexao);
-            
         }
     }
-    
+
     public function getAllBD() {
+        $host = 'localhost';
+        $user = 'root';
+        $pass = '';
+        $schema = 'inf4m211';
+        $conexao = mysqli_connect($host, $user, $pass, $schema);
+        if (!$conexao) {
+            die('Não foi possível conectar. ' . mysqli_error());
+        }
+
+        $sql = "select * from pessoa where cnpj is null";
+        $result = mysqli_query($conexao, $sql);
+        if ($result) {
+            $pfsBD = [];
+
+            while ($row = mysqli_fetch_assoc($result)) {
+
+                array_push($pfsBD, $row);
+            }
+            $_REQUEST['pessoaPFBD'] = $pfsBD;
+        } else {
+            $_REQUEST['pessoaPFBD'] = 0;
+        }
+        mysqli_close($conexao);
+    }
+
+    public function deletePes() {
+        if (isset($_POST['delete'])) {
+            $id = $_POST['id'];
+
             $host = 'localhost';
             $user = 'root';
             $pass = '';
             $schema = 'inf4m211';
             $conexao = mysqli_connect($host, $user, $pass, $schema);
             if (!$conexao) {
-                die('Não foi possível conectar. ' . mysqli_error());
+                die('Não foi possivel conectar. ' . mysqli_error());
             }
-        
-            $sql = "select * from pessoa where cnpj is null";
+
+            $sql = "delete from pessoa where idPessoa = $id";
             $result = mysqli_query($conexao, $sql);
-            if ($result) {
-             $pfsBD = [];
-
-      while ($row = mysqli_fetch_assoc($result)) {
-
-        array_push($pfsBD, $row);
-      }
-      $_REQUEST['pessoaPFBD'] = $pfsBD;
-    }else{
-      $_REQUEST['pessoaPFBD'] = 0;
-
+            if (!$result) {
+                die('Erro ao deletar. ' . mysqli_error($conexao));
+            }
+            mysqli_close($conexao);
+            header('Refresh: 0'); // recarrega a pág. F5 em 0 segundos
+        }
     }
-    mysqli_close($conexao);
+
+    public function getPessoaFById($id) {
+        $host = 'localhost';
+        $user = 'root';
+        $pass = '';
+        $schema = 'inf4m211';
+        $conexao = mysqli_connect($host, $user, $pass, $schema);
+        if (!$conexao) {
+            die('Não foi possivel conectar. ' . mysqli_error($conexao));
+        }
+
+        $sql = "select * from pessoa where idPessoa = $id";
+        $result = mysqli_query($conexao, $sql);
+        if ($result) {
+            $pfsBD = [];
+            while ($row = mysqli_fetch_assoc($result)) {
+                array_push($pfsBD, $row);
+            }
+            return $pfsBD;
+        }
+        mysqli_close($conexao);
     }
+
 }
