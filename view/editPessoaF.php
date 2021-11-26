@@ -20,9 +20,9 @@ $pf = $cadPFs->getPessoaFById($id);
         <title>Editar Pessoa Física</title>
     </head>
     <body>
-        <h1>Editar Pessoa Física</h1>
+       <h1>Editar Pessoa Fisíca</h1>
         <form action="<?php $cadPFs->updatePF(); ?>" method="POST">
-            <input type="hidden" value="<?php echo $pf[0]['idpessoa']; ?>" name="id"/>
+            <input type="hidden" value="<?php echo $pf[0]['idPessoa']; ?>" name="id"/>
             <input type="text" required value="<?php echo $pf[0]['nome']; ?>" name="nome"/>
             <br><br>
             <input type="tel" required value="<?php echo $pf[0]['telefone']; ?>" name="telefone"/>
@@ -39,7 +39,7 @@ $pf = $cadPFs->getPessoaFById($id);
             <input type="radio" <?php if($pf[0]['sexo']=="M"){echo 'checked';} ?> value="M" name="sexo"/>Masculino
             <br><br>
             <input type="submit" value="Salvar Alterações" name="update"/>
-            <input type="submit" value="Cancelar" name="Cancelar"/>
+            <input type="submit" value="Cancelar" name="cancelar"/>
         </form>
         <?php
         // put your code here
