@@ -21,10 +21,28 @@ $pf = $cadPFs->getPessoaFById($id);
     </head>
     <body>
         <h1>Editar Pessoa Física</h1>
+        <form action="<?php $cadPFs->updatePF(); ?>" method="POST">
+            <input type="hidden" value="<?php echo $pf[0]['idpessoa']; ?>" name="id"/>
+            <input type="text" required value="<?php echo $pf[0]['nome']; ?>" name="nome"/>
+            <br><br>
+            <input type="tel" required value="<?php echo $pf[0]['telefone']; ?>" name="telefone"/>
+            <br><br>
+            <input type="email" required value="<?php echo $pf[0]['email']; ?>" name="email"/>
+            <br><br>
+            <input type="text" value="<?php echo $pf[0]['endereco']; ?>" name="endereco"/>
+            <br><br>
+            <input type="number" required value="<?php echo $pf[0]['cpf']; ?>" name="cpf"/>
+            <br><br>
+            <input type="text" value="<?php echo $pf[0]['rg']; ?>" name="rg"/>
+            <br><br>
+            <input type="radio" <?php if($pf[0]['sexo']=="F"){echo 'checked';} ?> value="F" name="sexo"/>Feminino
+            <input type="radio" <?php if($pf[0]['sexo']=="M"){echo 'checked';} ?> value="M" name="sexo"/>Masculino
+            <br><br>
+            <input type="submit" value="Salvar Alterações" name="update"/>
+            <input type="submit" value="Cancelar" name="Cancelar"/>
+        </form>
         <?php
         // put your code here
-        var_dump($pf);
-        echo "<br>" . $pf[0]['nome'];
         ?>
     </body>
 </html>

@@ -184,4 +184,42 @@ class cPessoaF {
         mysqli_close($conexao);
     }
 
+    public function updatePF() {
+        if (isset($_POST['update'])) {
+            $host = 'localhost';
+            $user = 'root';
+            $pass = '';
+            $schema = 'inf4m211';
+            $conexao = mysqli_connect($host, $user, $pass, $schema);
+            if (!$conexao) {
+                die('Não foi possível conectar. ' . mysqli_error());
+            }
+            $idPessoa = $_POST['id'];
+            $Nome = $_POST['nome'];
+            $Email = $_POST['email'];
+            $Endereco = $_POST['endereco'];
+            $Telefone = $_POST['telefone'];
+            $Cpf = $_POST['cpf'];
+            $Rg = $_POST['rg'];
+            $Sexo = $_POST['sexo'];
+
+            $sql = "UPDATE `pessoa` SET `nome`='$Nome',`telefone`='$Telefone',"
+                    . "`email`='$Email',`endereco`='$Endereco',`cpf`='$Cpf',"
+                    . "`rg`='$Rg',`sexo`='$Sexo' WHERE `idPessoa`='$idPessoa'";
+        
+            $resultado = mysqli_query($conexao, $sql);
+
+
+            if (!$resultado) {
+             die('Erro ao atualizar pessoa na tabela. ' . mysqli_error($conexao));
+            }
+            mysqli_close($conexao);
+            header('Location: ../view/cadPessoaF.php');
+            
+        }
+        if(isset($_POST['cancelar'])) {
+            header('Location:../view/cadPessoaF.php');
+        }
+    }
+
 }
