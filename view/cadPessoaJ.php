@@ -15,9 +15,10 @@ $cadPessoaJ = new cPessoaJ();
     </head>
     <body>
          <h1>Cadastro de Pessoa Jurídica</h1>
+         <h2>CRUD</h2>
         <a href="../index.php">Voltar</a>
         <br><br>
-        <form action=""<?php $cadPessoaJ->inserir(); ?>"" method="POST">
+        <form action=""<?php $cadPessoaJ->inserirBD(); ?>"" method="POST">
             <input type="text" required placeholder="Razão social aqui..." name="social">
             <br><br>
             <input type="text" required placeholder="Nome Fantasia aqui..." name="fantasia">

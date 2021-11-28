@@ -9,7 +9,7 @@
 /**
  * Description of cPessoaF
  * Controller da Pessoa Fisíca
- * @author Paulo
+ * @author Paulo Steinborn
  */
 require_once '../model/pessoaF.php';
 
@@ -106,8 +106,8 @@ class cPessoaF {
             $resultado = mysqli_query($conexao, $sql);
 
 
-            if (!$resultado) {
-                die('Não foi possível inserir na tabela. ' . mysqli_error($conexao));
+             if (!$resultado) {
+             die('Não foi possível inserir na tabela. ' . mysqli_error($conexao));
             }
             mysqli_close($conexao);
         }
@@ -206,18 +206,17 @@ class cPessoaF {
             $sql = "UPDATE `pessoa` SET `nome`='$Nome',`telefone`='$Telefone',"
                     . "`email`='$Email',`endereco`='$Endereco',`cpf`='$Cpf',"
                     . "`rg`='$Rg',`sexo`='$Sexo' WHERE `idPessoa`='$idPessoa'";
-        
+
             $resultado = mysqli_query($conexao, $sql);
 
 
             if (!$resultado) {
-             die('Erro ao atualizar pessoa na tabela. ' . mysqli_error($conexao));
+              die('Erro ao atualizar pessoa na tabela. ' . mysqli_error($conexao));
             }
             mysqli_close($conexao);
             header('Location: ../view/cadPessoaF.php');
-            
         }
-        if(isset($_POST['cancelar'])) {
+        if (isset($_POST['cancelar'])) {
             header('Location:../view/cadPessoaF.php');
         }
     }

@@ -9,7 +9,7 @@
 /**
  * Description of pessoaJ
  * Classe da Pessoa Jurídica
- * @author jairb
+ * @author Paulo Steinborn
  */
 require_once 'pessoa.php';
 class pessoaJ extends pessoa{

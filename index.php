@@ -22,6 +22,7 @@ and open the template in the editor.
     <body>
         <h1>Cadastro de Pessoas</h1>
         <h2>INF4M211</h2>
+        <h3>@author Paulo Steinborn</h3>
         <table><!-- Cria tabela -->
             <tr><!-- Cria linha -->
                 <td><!-- Cria coluna -->

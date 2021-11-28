@@ -25,11 +25,11 @@ $cadPFs = new cPessoaF();
             </tr>
             <!--
             <?php foreach ($listPes as $pf): ?>
-                            <tr>
-                                <td><?php // echo $pf->getNome();     ?></td>
-                                <td><?php // echo $pf->getEmail();     ?></td>
-                                <td><?php // echo $pf->getCpf();     ?></td>
-                            </tr>
+                 <tr>
+                 <td><?php // echo $pf->getNome();  ?></td>
+                 <td><?php // echo $pf->getEmail(); ?></td>
+                 <td><?php // echo $pf->getCpf();   ?></td>
+                 </tr>
             <?php endforeach; ?>
             -->
             <!--Lista com dados recuperados do banco de dados-->
@@ -39,21 +39,22 @@ $cadPFs = new cPessoaF();
             } else {
                 foreach ($listPesBD as $pf) :
                     ?>
-                    <tr>
-                        <td><?php echo $pf['nome']; ?></td>
-                        <td><?php echo $pf['email']; ?></td>
-                        <td><?php echo $pf['cpf']; ?></td>
-                        <td>
-                            <form action="editPessoaF.php" method="POST"> 
-                                <input type="hidden" name="id" value="<?php echo $pf['idPessoa']; ?>"/>  
-                                <input type="submit" name="updatePF" value="Editar"/>
-                            </form>
-                            <form action="<?php $cadPFs->deletePes(); ?>" method="POST">
-                                <input type="hidden" name="id" value="<?php echo $pf['idPessoa']; ?>"/>
-                                <input type="submit" name="delete" value="Deletar"/>
-                            </form>
-                        </td>
-                    </tr>
+                     <tr>
+                     <td><?php echo $pf['nome']; ?></td>
+                     <td><?php echo $pf['email']; ?></td>
+                     <td><?php echo $pf['cpf']; ?></td>
+                     <td>
+                     <form action="editPessoaF.php" method="POST"> 
+                     <input type="hidden" name="id" value="<?php echo $pf['idPessoa']; ?>"/>  
+                     <input type="submit" name="updatePF" value="Editar"/>
+                     </form>
+                        
+                     <form action="<?php $cadPFs->deletePes(); ?>" method="POST">
+                     <input type="hidden" name="id" value="<?php echo $pf['idPessoa']; ?>"/>
+                     <input type="submit" name="delete" value="Deletar"/>
+                     </form>
+                     </td>
+                     </tr>
                     <?php
                 endforeach;
             }

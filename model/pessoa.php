@@ -9,9 +9,9 @@
 /**
  * Description of pessoa
  *
- * @author Paulo
+ * @author Paulo Steinborn
  */
- abstract class pessoa {
+    abstract class pessoa {
     //put your code here
     private $nome;//Nome da Pessoa Fisíca e Razão Social da Pessoa Jurídica
     private $telefone;

@@ -9,7 +9,7 @@
 /**
  * Description of pessoaF
  * Classe da Pessoa Fisíca com Herança da classe Pessoa
- * @author jairb
+ * @author Paulo Steinborn
  */
 require_once 'pessoa.php';
 class pessoaF extends pessoa{
